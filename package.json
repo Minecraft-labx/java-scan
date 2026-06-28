@@ -1,0 +1,6 @@
+{
+  "name": "dropper",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
